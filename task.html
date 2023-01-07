@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</head>
+<body>
+    
+    <script>
+        // program 1----------------------------------
+        // program 2------------------------------------------
+        // let numbers=[44,55,6,778,99,6]
+        // let shortnum=[]
+        // let shortedNum=numbers.sort((a, b)=>a-b);
+        // console.log(shortedNum)        
+        // let unique_number = shortedNum.filter((a, i) =>shortedNum.indexOf(a) === i );
+        // console.log(unique_number)
+        // ////////
+        
+        
+        function Sort_num(array) {
+            var done = false;
+            while (!done) {
+                done = true;
+                for (var i = 1; i < array.length; i += 1) {
+                    if (array[i - 1] > array[i]) {
+                        console.log(array[i])
+                        done = false;
+                        var a = array[i - 1];
+                        
+                        array[i - 1] = array[i];
+                        array[i] = a;
+                    }
+                }
+            }
+
+            return array;
+        }
+         var numbers = [44,55,6,778,99,6];
+        Sort_num(numbers);
+        console.log(numbers);
+      
+        function removeDuplicates(numbers) {
+        var unique = [];
+            for(i=0; i < numbers.length; i++){  
+                if(unique.indexOf(numbers[i]) === -1) {  
+                    unique.push(numbers[i]);  
+                }  
+            }
+            return unique;
+        }
+        console.log(removeDuplicates(numbers));
+
+    </script>
+</body>
+</html>

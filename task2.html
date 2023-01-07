@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+
+    <script>
+        let costomer=[ [25000,'2022-12-18',10], [50000,'2022-12-15',8], [25000,'2022-12-09',10] ]
+        let holidays=['2022-12-24','2022-12-25','2022-12-30','2023-01-01']
+
+        // calculate sundays of hollidays---------------
+        
+        // current date
+        let date=new Date()
+        let day=date.getDate()
+        let month=date.getMonth()+1
+        let year=date.getFullYear()
+        let currentDay=`${year}-0${month}-0${day}`
+        // console.log(currentDay)
+        let dat=[]
+
+        ////////////////////////////////////
+        costomer.map((val)=>{
+               let date_date=[]
+               dat.push(date_date)
+              let dts= new Date(val[1]);
+                dts.setDate(dts.getDate() + val[2]);
+                let finalDate=dts.getDate()+1
+                let finalmonth=dts.getMonth()+1
+                let finalyear=dts.getFullYear()
+                let finaldays=`${finalyear}-${finalmonth}-${finalDate}`
+                // console.log('daysssss',finaldays);
+            
+            ///////////////////
+
+                var start = new Date(val[1]);
+                start.setDate(start.getDate() + 1);
+                var finish = new Date(finaldays);
+                
+                var dayMilliseconds = 1000 * 60 * 60 * 24;
+                var weekendDays = 0;
+                let arry=[]
+                while (start < finish) {
+                    var days = start.getDay()
+                    
+                    if (days == 0) {
+                        weekendDays++;
+                    }
+                    start = new Date(+start + dayMilliseconds);
+                    let btweendate=start.getDate()+1
+                    let btweenmon=start.getMonth()+1
+                    let btweenyear=start.getFullYear()
+                    let betweendays=`${btweenyear}-${btweenmon}-${btweendate}`
+                    
+                    arry.push(betweendays)
+                    
+                }
+                console.log(arry)
+                console.log(holidays)
+                let datas=[...arry,...holidays]
+                //  console.log('dates',datas)
+                let unique_date = datas.filter((a, i) =>datas.indexOf(a) != i );
+                // console.log(`uni`,unique_date.length)
+                let getDate=[]
+                unique_date.map((val)=>{
+                    let unidate=new Date(val)
+                    unidate.setDate(unidate.getDate() + 1);
+                    let get_day=unidate.getDay()
+                    if(get_day==0){
+                        getDate.push(get_day)
+                    }
+                   
+                })
+                 console.log('getday',)
+                // let filtered=arry.filter((value)=>holidays.includes(value))
+                // console.log(filtered)
+                 //-----------------------------------------
+
+                 let dt= new Date(finaldays);
+                dt.setDate(dt.getDate() + weekendDays+unique_date.length+getDate.length);
+                let endDate=dt.getDate()+1
+                let endmonth=dt.getMonth()+1
+                let endyear=dt.getFullYear()
+                let endday=`${endyear}-${endmonth}-${endDate}`
+                date_date.push(endday)
+                // console.log('day',endday);
+            
+                //to calculate panalty days.........
+                let pernaltycurrentday=new Date()
+                let pernaltyday=pernaltycurrentday.getDate()
+                let peraltrymonth=pernaltycurrentday.getMonth()+1
+                let pernaltyyear=pernaltycurrentday.getFullYear()
+                let p_currentDay=`${pernaltyyear}-0${peraltrymonth}-0${pernaltyday}`
+                // console.log(p_currentDay)
+
+
+                var per_start = new Date(endday);
+                per_start .setDate(per_start .getDate() + 1);
+                var p_finish = new Date(p_currentDay);
+                
+                var dayMilliseconds = 1000 * 60 * 60 * 24;
+                var weekendDays = 0;
+                let ary=[]
+                let per_arr=[]
+                while (per_start  <= p_finish) {
+                    let days = per_start .getDay()
+                    
+                    if (days == 0) {
+                        weekendDays++;
+                    }
+                    per_start = new Date(+per_start + dayMilliseconds);
+
+                    let getp_day=per_start.getDay()
+                    if(getp_day==0){
+                        per_arr.push(getp_day)
+                    }
+                    ary.push(per_start)
+                    
+                }
+                // console.log('****',ary.length)
+                // console.log('****',per_arr.length)
+                let a=ary.length-per_arr.length
+                // console.log('a',a)
+                date_date.push(a)
+                let amount=(val[0]*(2/100))*a
+                date_date.push(amount)
+        
+    })
+    console.log('dat',dat)
+
+    let d=new Date()
+   
+
+ 
+    </script>
+</body>
+</html>

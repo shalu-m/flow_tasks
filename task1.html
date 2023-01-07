@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</head>
+<body>
+    <script>
+        // let prices=[7,1,5,3,6,4]
+        let prices=[7,2,5,3,6,1]
+        let arr=[]
+        
+        for(i=0;i<=prices.length;i++){
+            let minNum=Math.min(...prices)
+            let inde=prices.indexOf(minNum)
+            let del=prices.slice(inde)
+            let maxNum=Math.max(...del)
+            let profit=maxNum-minNum
+            arr.push(profit)
+            console.log(arr)
+            index=prices.indexOf(minNum);
+            if (index > -1) { 
+                prices.splice(index, 1); 
+            }
+        }
+        let prof=Math.max(...arr)
+        console.log(prof)
+
+
+//     </script>
+</body>
+</html>
